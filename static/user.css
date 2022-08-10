@@ -1,0 +1,40 @@
+html{
+    background-image: url("https://drive.google.com/uc?export=view&id=18CiDDCvQ4o7wvpxVBN-tWrqM_AbgekBA");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    
+}
+.btn{
+    width: 150px;
+    height: 40px;
+    color:white;
+    border:none;
+    text-align: center;
+    cursor: pointer;
+    margin: auto;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 4px;
+}
+.times{
+    font-size: 40px;
+    color: gray;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+#time{
+    font-size: 40px;
+    color: gray;
+    margin-top: 10px;
+    margin-bottom: 10px;
+   
+  
+}
+.video{
+    display: flex;
+    justify-content: center; 
+    align-items: center;  
+}
