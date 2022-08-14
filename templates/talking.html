@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8">
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Record</title>
+</head>
+   <body>
+      {% if d %}
+      <h1>Dear {{d}}, what a great speech!</h1>
+      {% endif %}
+      {% if img_m %}
+      <img src ="static/chart/{{img_m}}" \>
+      {% endif %}
+      <table border = 1>
+         <thead>
+            <td>RECORD</td>
+         </thead>
+         
+         {% for row in rows %}
+         <tr>
+            <td>{{row["picName"]}}</td>  
+         </tr>
+         {% endfor %}      
+      </table>
+      
+   <form method="POST" enctype="multipart/form-data">
+       <h1>Enter the time you want to query:</h1>
+      	<input type= "text" name ="picture name"  class="form-control"> 
+      <button type="submit">Query</button>
+      <br>
+      {% if image %}
+        <img  src="static/displayDB/{{image}}"   width="1100" >
+      {% endif %}
+    </form>
+
+
+   </body>
+</html>
