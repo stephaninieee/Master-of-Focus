@@ -12,11 +12,7 @@
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
-        <!-- 表格在這兒！請取用 -->
-        {% if img_a %}
-        <img src ="static/chart/{{img_a}}" width="400" height="250" \>
-        {% endif %}
-        <!-- 表格在這兒！請取用 -->
+       
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
          
@@ -40,26 +36,7 @@
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Result Dashboard
-                            </a>
-                            
-                            <div class="sb-sidenav-menu-heading">Exhibit</div>
-                            <a class="nav-link" href="charts.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Charts
-                            </a>
-                            
-                            <a class="nav-link" href="student_tables.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Student Tables
-                            </a>
-                           
-                        </div>
+                   
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">MIS PROJECT 2022</div>
@@ -122,26 +99,16 @@
                             </div>
 
                         </div>
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-area me-1"></i>
-                                        Area Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                        Bar Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                        </div>
+                        <!-------stephanie start add here -->
+                         <!-- 表格在這兒！請取用 -->
+                        {% if img_a %}
+                        <center> 
+                        <img src ="static/chart/{{img_a}}" width="ˊ600" height="400" \>
+                        </center>
+                        {% endif %}
+                        <!-- 表格在這兒！請取用 -->
+                        <!-------stephanie end add here -->
+                       
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
