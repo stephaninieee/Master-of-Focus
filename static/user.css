@@ -1,11 +1,18 @@
 html{
-    background-image: url("https://drive.google.com/uc?export=view&id=18CiDDCvQ4o7wvpxVBN-tWrqM_AbgekBA");
+    /* Jenny start add here */
+    background-image: url("pg2.jpg");
+    /* Jenny end add here */
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
+   
     
 }
+.h{
+    font-family: 'Varela Round', sans-serif;
+}
+
 .btn{
     width: 150px;
     height: 40px;
@@ -14,6 +21,8 @@ html{
     text-align: center;
     cursor: pointer;
     margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
     display: inline-block;
     font-size: 20px;
     border-radius: 4px;
