@@ -207,16 +207,16 @@ def generate_frames(n):
                         eyesCloseCount += 1
                         eyesOpenCount = 0
                         #user continuously close his/her eyes equal or grater than 20 times:
-                        if eyesCloseCount == 30: 
+                        if eyesCloseCount == 20: 
                             cv2.putText(frame, "SLEEP!", (20,90),cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2)
-                            sleep = sleep + 30
+                            sleep = sleep + 20
                             sleepFrame += 1
                             if frameCount%1 == 0:
                                 with sql.connect("data_test.db") as conl:
                                     curl = conl.cursor()
                                     curl.execute("REPLACE INTO areaTable (id,time,sleep,leave,mouth,blink,normal) VALUES (?,?,?,?,?,?,?)",(name,timerecord,1,0,0,0,0) )
                                     conl.commit()
-                        elif eyesCloseCount > 30:
+                        elif eyesCloseCount > 20:
                             cv2.putText(frame, "SLEEP!!!", (20,90),cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2)
                             sleep += 1
                             sleepFrame += 1
@@ -365,8 +365,8 @@ def index1():
     labels = ['sleep'+str(Roundd(sum_s)), 'leave'+str(Roundd(sum_l)),
             'blink'+str(Roundd(sum_b)), 'talk'+str(Roundd(sum_m)),
             'normal'+str(Roundd(sum_n))]
-    color_list = ['#0f7216', '#b2790c', '#ffe9a3',
-                '#f9d4d4', '#d35158', '#ea3033']
+    color_list = ['#72E3B4', '#B87070', '#E7D783',
+                '#5CADAD', '#F8E8E8']
     plt.rc('font', size=14)
     squarify.plot(sizes=volume, label=labels,
                 color=color_list, alpha=0.7)
@@ -399,10 +399,11 @@ def talking():
     ###以上不用改###
 
     #[圖表修外貌]以下畫圖區：
+    color = ['#5CADAD','#D0D0D0']
     plt.figure(figsize=(6,6))    
     labels = 'talk','other'
     size = [result_mouth,other_mouth] #不改
-    plt.pie(size , labels = labels,autopct='%1.1f%%')
+    plt.pie(size , labels = labels,autopct='%1.1f%%',colors = color)
     plt.axis('equal')
     #以上畫圖區#
     
@@ -438,11 +439,12 @@ def blinking():
     now = datetime.now().timestamp()
     ###以上勿改###
 
+    color = ['#FFED97','#D0D0D0']
     #[圖表修外貌]以下畫圖區：
     plt.figure(figsize=(6,6))    
     labels = 'blink','other'
     size = [result_blink,other_blink] #不改
-    plt.pie(size , labels = labels,autopct='%1.1f%%')
+    plt.pie(size , labels = labels,autopct='%1.1f%%', colors = color)
     plt.axis('equal')
     #以上畫圖區#
 
@@ -465,19 +467,19 @@ def sleeping():
     cur = con.cursor()
     cur.execute("select picName from sleepTable WHERE id = ?",(d,))
     rows = cur.fetchall();
-
+    
     data = pd.read_csv("out.csv")
     row = 0
     result_sleep = data.loc[row, 'sleep_count'] #mouth ratio
     other_sleep = (1-result_sleep) #other ratio
     now = datetime.now().timestamp()
     ###以上勿改###
-
+    color = ['#7AFEC6','#D0D0D0']
     #[圖表修外貌]以下畫圖區############
     plt.figure(figsize=(6,6))    
     labels = 'sleep','other'
     size = [result_sleep,other_sleep] #不改
-    plt.pie(size , labels = labels,autopct='%1.1f%%')
+    plt.pie(size , labels = labels,autopct='%1.1f%%',colors = color)
     plt.axis('equal')
     #以上畫圖區#############
 
@@ -518,12 +520,12 @@ def appearing():
     other_leave = (1-result_leave) #other ratio
     now = datetime.now().timestamp()
     ###以上勿改###
-
+    color = ['#B87070','#D0D0D0']
     #[圖表修外貌]以下畫圖區：
     plt.figure(figsize=(6,6))    
     labels = 'leave','other'
     size = [result_leave,other_leave] #不改
-    plt.pie(size , labels = labels,autopct='%1.1f%%')
+    plt.pie(size , labels = labels,autopct='%1.1f%%',colors = color)
     plt.axis('equal')
     #以上畫圖區#
 
