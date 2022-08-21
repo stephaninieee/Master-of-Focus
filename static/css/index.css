@@ -2492,7 +2492,7 @@ textarea.form-control-lg {
      -moz-appearance: none;
           appearance: none;
   -webkit-print-color-adjust: exact;
-          color-adjust: exact;
+          print-color-adjust: exact;
 }
 .form-check-input[type=checkbox] {
   border-radius: 0.25em;
@@ -11747,15 +11747,71 @@ input[type="submit"]
     height: 50px;
     width: 200px;
     border-radius: 0 25px  25px 0;
-    border: none;
+    border: 2px solid #00615C;
     outline: none;
     cursor: pointer;
-    background: #000 ;
-    color: #000;
+    background: #64a19e ;
+    color: #00615C;
 }
 
 input[type="submit"]:hover
 {
-  background: #000;
+  background: #64a19e;
+  border: 2px solid #ffffff;
+  color: #ffffff
 }
 
+#b{
+  position: relative;
+    left: 0px;
+    height: 50px;
+    width: 200px;
+    border-radius: 0 25px  25px 0;
+    border: 2px solid #876D17;
+    outline: none;
+    cursor: pointer;
+    background: #e4c662 ;
+    color: #876D17;
+}
+
+#b:hover{
+  background: #e4c662;
+  border: 2px solid #ffffff;
+  color: #ffffff
+}
+#s{
+  position: relative;
+    left: 0px;
+    height: 50px;
+    width: 200px;
+    border-radius: 0 25px  25px 0;
+    border: 2px solid #2C7255;
+    outline: none;
+    cursor: pointer;
+    background: #67c29c ;
+    color: #2C7255;
+}
+
+#s:hover{
+  background:#67c29c;
+  border: 2px solid #ffffff;
+  color: #ffffff
+}
+#a{
+  position: relative;
+    left: 0px;
+    height: 50px;
+    width: 200px;
+    border-radius: 0 25px  25px 0;
+    border: 2px solid #5C383B;
+    outline: none;
+    cursor: pointer;
+    background:  #a06468 ;
+    color: #5C383B;
+}
+
+#a:hover{
+  background: #a06468;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
