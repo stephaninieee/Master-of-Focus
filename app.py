@@ -362,11 +362,11 @@ def index1():
     
     #[圖表修外貌]這裡開始是在畫圖，可修改樣式(但勿改的區塊不可改！)：
     volume = [sum_s, sum_l, sum_b, sum_m, sum_n] #NO
-    labels = ['sleep'+str(Roundd(sum_s)), 'leave'+str(Roundd(sum_l)),
-            'blink'+str(Roundd(sum_b)), 'talk'+str(Roundd(sum_m)),
-            'normal'+str(Roundd(sum_n))]
-    color_list = ['#72E3B4', '#B87070', '#E7D783',
-                '#5CADAD', '#F8E8E8']
+    labels = [str(Roundd(sum_s)), str(Roundd(sum_l)),
+            str(Roundd(sum_b)), str(Roundd(sum_m)),
+            'Perfect '+str(Roundd(sum_n))]
+    color_list = ['#67c29c', '#a06468', '#e4c662',
+                '#64a19e', '#F8E8E8']
     plt.rc('font', size=14)
     squarify.plot(sizes=volume, label=labels,
                 color=color_list, alpha=0.7)
@@ -399,7 +399,7 @@ def talking():
     ###以上不用改###
 
     #[圖表修外貌]以下畫圖區：
-    color = ['#5CADAD','#D0D0D0']
+    color = ['#64a19e','#D0D0D0']
     plt.figure(figsize=(6,6))    
     labels = 'talk','other'
     size = [result_mouth,other_mouth] #不改
@@ -439,7 +439,7 @@ def blinking():
     now = datetime.now().timestamp()
     ###以上勿改###
 
-    color = ['#FFED97','#D0D0D0']
+    color = ['#e4c662','#D0D0D0']
     #[圖表修外貌]以下畫圖區：
     plt.figure(figsize=(6,6))    
     labels = 'blink','other'
@@ -474,7 +474,7 @@ def sleeping():
     other_sleep = (1-result_sleep) #other ratio
     now = datetime.now().timestamp()
     ###以上勿改###
-    color = ['#7AFEC6','#D0D0D0']
+    color = ['#67c29c','#D0D0D0']
     #[圖表修外貌]以下畫圖區############
     plt.figure(figsize=(6,6))    
     labels = 'sleep','other'
@@ -520,7 +520,7 @@ def appearing():
     other_leave = (1-result_leave) #other ratio
     now = datetime.now().timestamp()
     ###以上勿改###
-    color = ['#B87070','#D0D0D0']
+    color = ['#a06468','#D0D0D0']
     #[圖表修外貌]以下畫圖區：
     plt.figure(figsize=(6,6))    
     labels = 'leave','other'
