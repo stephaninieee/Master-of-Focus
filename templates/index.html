@@ -18,13 +18,13 @@
        
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-         
-            <a class="navbar-brand ps-3" href="index.html">Let's see your result</a>
-        
+            {% if d %}
+            <a class="navbar-brand ps-3" href="index.html">Hi, dear {{d}}.</a>
+            {% endif %}
             <!-- Sidebar Toggle-->
             
         </nav>
-        <div id="layoutSidenav">
+        <!-- <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                    
@@ -34,13 +34,15 @@
                         
                     </div>
                 </nav>
-            </div>
+            </div> -->
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Result Dashboard</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Let's see your results here.</li>
+                            {% if d %}
+                            <li class="breadcrumb-item active">Let's see {{d}}'s results here.</li>
+                            {% endif %}
                         </ol>
                         <!--start the change for db connection-->
 
