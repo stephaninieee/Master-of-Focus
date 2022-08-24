@@ -31,9 +31,13 @@
                     {% if d %}
                     <h2>Dear {{d}},</h2><h2>The time in your life can go by in the blink of an eye,</h2><h2>so look for what lasts a lifetime.</h2>
                     {% endif %}
+                    {% if b %}
+                    <h2>{{b}}</h2>
+                    {% endif %}
                     {% if img_b %}
                     <img src ="static/chart/{{img_b}}" \>
                     {% endif %}
+                    
                 </p>
             </div>
         </header>
