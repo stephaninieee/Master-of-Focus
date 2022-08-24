@@ -281,6 +281,12 @@ def generate_frames(n):
         else:
             d = duration/classtime
         score =( 1 - ((mL + r + rL + bL) / 4) ) * 100 * d
+
+        bb = blink_total / duration
+        if bb >= 0.3:
+            bbb = 0
+        else:
+            bbb =1
         #record data to database:
         with sql.connect("data_test.db") as con2:
                 cur2 = con2.cursor()
@@ -290,6 +296,7 @@ def generate_frames(n):
                 cur2.execute("UPDATE user SET blink_count=? WHERE user_id=?",(Roundd(bL),name))
                 cur2.execute("UPDATE user SET duration=? WHERE user_id=?",(Roundd(d),name))
                 cur2.execute("UPDATE user SET score=? WHERE user_id=?",(Roundd(score),name))
+                cur2.execute("UPDATE user SET bbb=? WHERE user_id=?",(bbb,name))
                 con2.commit()
 
 #首頁的後端程式碼：      
@@ -326,7 +333,7 @@ def index1():
     cur.execute("select * from user WHERE user_id =?",(d,))
     a = cur.fetchall()
     
-    cur.execute("select sleep_count,leave_count,mouth_count,blink_count from user WHERE user_id =?",(d,))
+    cur.execute("select sleep_count,leave_count,mouth_count,blink_count,bbb from user WHERE user_id =?",(d,))
     with open("out.csv", 'w',newline='') as csv_file: 
         csv_writer = csv.writer(csv_file)
         csv_writer.writerow([i[0] for i in cur.description]) 
@@ -443,6 +450,11 @@ def blinking():
     d = session['name']
     data = pd.read_csv("out.csv")
     row = 0
+    bbb = data.loc[row, 'bbb']
+    if bbb == 0:
+        b = '[You are naughty!]'
+    else:
+        b = '[You are healthy!]'
     result_blink = data.loc[row, 'blink_count'] #mouth ratio
     other_blink = (1-result_blink) #other ratio
     now = datetime.now().timestamp()
@@ -463,7 +475,7 @@ def blinking():
                 pad_inches=0.0,
                 fname='static/chart/blink'+str(now)+'.png')
     img_b = 'blink'+str(now)+'.png'
-    return render_template("blinking.html", img_b = img_b,d = d)
+    return render_template("blinking.html", img_b = img_b,d = d,b = b)
     ###以上勿改###
 
 #睡覺指標分頁程式碼：
