@@ -88,6 +88,8 @@ def generate_frames(n):
     duration_temp = 0
     duration = 0
     datetext = None
+    classtime = 20
+    d = 0
    
     while True: 
         success,frame = camera.read() #read the camera frame
@@ -274,7 +276,11 @@ def generate_frames(n):
         end_time = time.time()
         duration_temp = end_time-start_time 
         duration += duration_temp
-
+        if d >= 1:
+            d = 1
+        else:
+            d = duration/classtime
+        score =( 1 - ((mL + r + rL + bL) / 4) ) * 100 * d
         #record data to database:
         with sql.connect("data_test.db") as con2:
                 cur2 = con2.cursor()
@@ -282,7 +288,8 @@ def generate_frames(n):
                 cur2.execute("UPDATE user SET sleep_count=? WHERE user_id=?", (Roundd(r),name))
                 cur2.execute("UPDATE user SET leave_count=? WHERE user_id=?",(Roundd(rL),name))
                 cur2.execute("UPDATE user SET blink_count=? WHERE user_id=?",(Roundd(bL),name))
-                cur2.execute("UPDATE user SET duration=? WHERE user_id=?",(Roundd(duration),name))
+                cur2.execute("UPDATE user SET duration=? WHERE user_id=?",(Roundd(d),name))
+                cur2.execute("UPDATE user SET score=? WHERE user_id=?",(Roundd(score),name))
                 con2.commit()
 
 #首頁的後端程式碼：      
@@ -316,6 +323,8 @@ def index1():
     cur = con.cursor()
     cur.execute("select * from user")
     rows = cur.fetchall()
+    cur.execute("select * from user WHERE user_id =?",(d,))
+    a = cur.fetchall()
     
     cur.execute("select sleep_count,leave_count,mouth_count,blink_count from user WHERE user_id =?",(d,))
     with open("out.csv", 'w',newline='') as csv_file: 
@@ -362,8 +371,8 @@ def index1():
     
     #[圖表修外貌]這裡開始是在畫圖，可修改樣式(但勿改的區塊不可改！)：
     volume = [sum_s, sum_l, sum_b, sum_m, sum_n] #NO
-    labels = [str(Roundd(sum_s)), str(Roundd(sum_l)),
-            str(Roundd(sum_b)), str(Roundd(sum_m)),
+    labels = ['', '',
+            '', '',
             'Perfect '+str(Roundd(sum_n))]
     color_list = ['#67c29c', '#a06468', '#e4c662',
                 '#64a19e', '#F8E8E8']
@@ -378,7 +387,7 @@ def index1():
                 pad_inches=0.0,
                 fname='static/chart/all'+str(now)+'.png')
     img_a = 'all'+str(now)+'.png'
-    return render_template("index.html", rows = rows, img_a = img_a, d = d)
+    return render_template("index.html", rows = rows, img_a = img_a, d = d, a = a)
     ###以上勿改###
 
 #講話指標分頁程式碼：
