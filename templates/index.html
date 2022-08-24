@@ -22,9 +22,12 @@
        
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
+            {% for as in a %}
             {% if d %}
-            <a class="navbar-brand ps-3" href="index.html">Hi, dear {{d}}.</a>
+            <a class="navbar-brand ps-3" href="index.html">Dear {{d}}, your score is {{as["score"]}}!</a>
             {% endif %}
+            {% endfor %}
+
             <!-- Sidebar Toggle-->
             
         </nav>
@@ -43,11 +46,23 @@
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Result Dashboard</h1>
+                       
+                        <!-- <ol class="breadcrumb mb-4"> -->
+                            
+                           
+                               
+                            
+                        <!-- </ol> -->
+                        
                         <ol class="breadcrumb mb-4">
+                            
                             {% if d %}
-                            <li class="breadcrumb-item active">Let's see {{d}}'s results here.</li>
+                            <h5 style="list-style-type: none; color: #6C6C6C	;	">Let's see {{d}}'s results here.</h5>
+                            
                             {% endif %}
+                            
                         </ol>
+                        
                         <!--start the change for db connection-->
 
                         <div class="row">
@@ -83,10 +98,11 @@
                                     </div>
                                 </div>
                             </div>
-
+                            
+                    
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">Appearing</div>
+                                    <div class="card-body">Disappearing</div>
                                     <div>
                                         <form action = "{{ url_for('appearing') }}">
                                             <input type="submit" submit name="start" id="a" value="Details">
@@ -94,15 +110,37 @@
                                     </div>
                                 </div>
                             </div>
-
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6" style="list-style-type: none; color: #6C6C6C	;	">
+                                <!-- <div class="card mb-4"> -->
+                                    <!-- <div class="card-header"> -->
+                                        <!-- <i class="fas fa-chart-area me-1"></i> -->
+                                        <h5>Overall condition chart:</h5>
+                                    <!-- </div> -->
+                                    {% if img_a %}
+                                 
+                                    <div class=card-body><img src ="static/chart/{{img_a}}" width="540" height="360"  \></div>
+                                    
+                                    {% endif %}
+                                <!-- </div> -->
+                            </div>
+                            <div class="col-xl-6">
+                                <div >
+                                    
+                                    {% if img_a %}
+                                 
+                                    <div class=card-body><img src ="static/eg.jpg" width="600" height="400" style = "position: relative;left:-200px; "\></div>
+                                    
+                                    {% endif %}
+                                </div>
+                            </div>
                         </div>
                         <!-------stephanie start add here -->
                          <!-- 表格在這兒！請取用 -->
-                        {% if img_a %}
-                        <center> 
-                        <img src ="static/chart/{{img_a}}" width="ˊ600" height="400" \>
-                        </center>
-                        {% endif %}
+                        
+                       
                         <!-- 表格在這兒！請取用 -->
                         <!-------stephanie end add here -->
                        
@@ -119,7 +157,8 @@
                                         <td>Sleep</td>
                                         <td>Leave</td>
                                         <td>Blink</td>
-                                        <td>Duration</td>
+                                        <td>Participation</td>
+                                        <td>Score</td>
                                      </thead>
                             
                                      {% for row in rows %}
@@ -130,6 +169,7 @@
                                            <td>{{row['leave_count']}}</td>    
                                            <td>{{row['blink_count']}}</td>  
                                            <td>{{row['duration']}}</td>
+                                           <td>{{row['score']}}</td>
                                         </tr>
                                      {% endfor %}
                                     </tbody>
