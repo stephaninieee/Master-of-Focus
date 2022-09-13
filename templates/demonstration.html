@@ -43,13 +43,15 @@
                     </div>
             <div class="box">
                         <!-- ########here####### --><!--ok!-->>
-                        <h2 class="Id_title">Input your student ID and start learning</h2>
+                        <h2 class="Id_title">Input your student/teacher ID and course number (e.g. 000000_c01)</h2>
                         <form action = "{{ url_for('user') }}" method = "POST" >
-                            <input type="text" name="id" placeholder="Type here">
-                            <input type="submit" submit name="start" value="Submit">
+                            <input type="text" name="id" placeholder="type here...">
+                            <input type="submit" submit name="start" value="Sign in">
                         </form>
+                       
                         <form action = "{{ url_for('index1') }}"  >
-                            <input type="submit" submit name="start" id="notuser" value="Not User">
+                            
+                            <input type="submit" submit name="start" id="notuser" value="Sign up ">
                             
                         </form>
 
