@@ -32,6 +32,5 @@ After setting up the system, navigate to `localhost:5000` on your web browser to
 - **For Teachers**: Use your instructor login to view and analyze attentiveness metrics across your classes.
 
 ## Demo
-  
-
+Watch the demo video on YouTube: [Master of Focus](https://www.youtube.com/watch?v=aTVNoi8jLWA)
 
