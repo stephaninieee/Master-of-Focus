@@ -31,7 +31,7 @@ After setting up the system, navigate to `localhost:5000` on your web browser to
 - **For Students**: Log in with your student credentials to track your real-time attentiveness during classes.
 - **For Teachers**: Use your instructor login to view and analyze attentiveness metrics across your classes.
 
-  ## Demo
+## Demo
   
 
 
