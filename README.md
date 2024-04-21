@@ -1,21 +1,37 @@
-重要！！！！！請先看這邊！！！！！
 
-主程式：app.py
 
-註：
 
-(1) .static/chart資料夾、.static/displayDB資料夾不要更動或使用，他們是系統用的
+# Master of Focus
 
-(2) 記得去http://dlib.net/files/ 下載shape_predictor_68_face_landmarks.dat.bz2 放到根目錄才能執行喔喔
+## Overview
+Master of Focus is a cutting-edge classroom engagement system designed to improve students' focus during remote learning sessions. This system employs facial recognition technology to assess students' attentiveness in real-time, providing valuable feedback to both students and educators.
 
-   還有記得新版data_test.db要去專題雲端下載，github上這個是舊版的！
+## Key Features
 
-(3) 如果有更動到app.py的部分都一定要註解標示出來，然後註解要寫姓名跟日期時間！
+- **Real-Time Engagement Tracking**: Continuously monitors and analyzes students' attentiveness during class.
+- **Instructor Dashboard**: Enables instructors to view detailed reports on each student’s focus level, class participation, and overall performance.
+- **Individual Performance Insights**: Students can access their own focus metrics and performance, helping them identify areas for improvement.
+- **Alert System**: Notifies when a student’s attention deviates, allowing for immediate correction.
+- **Comprehensive Reporting**: Generates detailed reports on class and individual performance for further analysis.
 
-   統一格式這樣大家比較好查：
+## System Architecture
 
-    #以下(或以上)_姓名_日期_時間(註解內容)
-    
-   e.g.像這樣把更動的內容上下包起來比較一目瞭然：
-    
-   <img width="325" alt="截圖 2022-08-14 下午11 19 28" src="https://user-images.githubusercontent.com/86204411/184544551-809dbf44-9398-4d02-9270-c7c3a6f5e071.png">
+The backend of the system uses `dlib` for precise face positioning combined with `Python` for processing the engagement metrics. Data is stored in `SQLite` and served via a `Flask` web framework. The frontend is developed using `HTML`, `CSS`, and `JavaScript` to stream video data to the database in real-time.
+
+## Setup 
+   Run the Flask server:
+   ```
+   python app.py
+   ```
+
+## Usage
+
+After setting up the system, navigate to `localhost:5000` on your web browser to access the system dashboard.
+
+- **For Students**: Log in with your student credentials to track your real-time attentiveness during classes.
+- **For Teachers**: Use your instructor login to view and analyze attentiveness metrics across your classes.
+
+  ## Demo
+  
+
+
